@@ -52,8 +52,11 @@ for link in $links; do
 
 	ip route add $network/$prefix dev $link src $ip table $link
 	ip route add default via $gateway table $link
+
 	ip rule add from $ip table $link
 	ip rule add to $ip table $link
+
+	ip route flush cache
 
 done
 
